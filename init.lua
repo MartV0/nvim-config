@@ -191,6 +191,17 @@ end)
 
 lsp.extend_cmp()
 
+local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
+
+cmp.setup({
+  mapping = {
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    ['<Tab>'] = cmp_action.tab_complete(),
+    ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
+  }
+})
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
   -- Replace the language servers listed here
@@ -205,18 +216,13 @@ require('mason-lspconfig').setup({
   },
 })
 --TODO
---mason
-    --LSP
-    --DAP
-    --linter
-    --formatter
---autocomplete, coc
---snippets, ultisnips?
---peak definition 
+--DAP
+--formatter
+--betere bindings autocomplete?
+--snippets
 --maybe add later stuff:
     --easy align maybe
     --telescope extensie -> zoek door text
-    --better-escape als ik jj ga gebruiken voor esc
     --harpoon
     --kijken voor coole motions plugins
     --iets voor git -> git-conflicts.nvim
@@ -236,6 +242,7 @@ vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
 vim.keymap.set('n', '<leader>p', '"+p', opts)
 vim.keymap.set('n', 'yp', '"0p', opts)
+vim.keymap.set('i', 'jj', '<Esc>', opts)
 
 vim.keymap.set('n', '<leader>t', vim.cmd.NvimTreeToggle, opts)
 vim.keymap.set('n', '<leader>o', 'o<Esc>', opts)
