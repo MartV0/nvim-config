@@ -212,7 +212,7 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
     -- Replace the language servers listed here
     -- with the ones you want to install
-    ensure_installed = { "lua_ls", "jedi_language_server" },
+    ensure_installed = { "lua_ls", "pyright" },
     --TODO: misschien pyright ipv jedi?
     handlers = {
         lsp.default_setup,
