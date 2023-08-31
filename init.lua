@@ -184,9 +184,14 @@ require("lazy").setup(plugins)
 local lsp = require('lsp-zero').preset({})
 
 lsp.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp.default_keymaps({buffer = bufnr, preserve_mappings = false})
+    -- see :help lsp-zero-keybindings
+    -- to learn the available actions
+    lsp.default_keymaps({buffer = bufnr, preserve_mappings = false})
+    local opts = {buffer = bufnr}
+
+    vim.keymap.set({'n', 'x'}, 'gq', function()
+        vim.lsp.buf.format({async = false, timeout_ms = 10000})
+    end, opts)
 end)
 
 lsp.extend_cmp()
