@@ -129,7 +129,7 @@ local plugins = {
             vim.fn["mkdp#util#install"]()
         end,
     },
-    { --TODO:
+    {
         'simrat39/symbols-outline.nvim',
         config = function()
           require("symbols-outline").setup()
@@ -218,7 +218,6 @@ require('mason-lspconfig').setup({
 --TODO
 --DAP
 --formatter
---betere bindings autocomplete?
 --snippets
 --maybe add later stuff:
     --easy align maybe
@@ -251,4 +250,6 @@ local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, opts)
 vim.keymap.set('n', '<leader>g', builtin.git_files, opts)
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, opts)
+vim.keymap.set("n", "]t", require("todo-comments").jump_next)
+vim.keymap.set("n", "]t", require("todo-comments").jump_prev)
 vim.keymap.set({'n','v'}, '<leader>c', '<plug>NERDCommenterToggle', opts)
