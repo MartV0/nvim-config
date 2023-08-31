@@ -67,7 +67,7 @@ local plugins = {
             })
         end
     },
-    { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+    { "bluz71/vim-nightfly-colors",       name = "nightfly", lazy = false, priority = 1000 },
     {
         "nvim-tree/nvim-tree.lua",
         version = "*",
@@ -213,6 +213,7 @@ require('mason-lspconfig').setup({
     -- Replace the language servers listed here
     -- with the ones you want to install
     ensure_installed = { "lua_ls", "jedi_language_server" },
+    --TODO: misschien pyright ipv jedi?
     handlers = {
         lsp.default_setup,
         lua_ls = function()
@@ -257,5 +258,5 @@ vim.keymap.set('n', '<leader>f', builtin.find_files, opts)
 vim.keymap.set('n', '<leader>g', builtin.git_files, opts)
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, opts)
 vim.keymap.set("n", "]t", require("todo-comments").jump_next)
-vim.keymap.set("n", "]t", require("todo-comments").jump_prev)
+vim.keymap.set("n", "[t", require("todo-comments").jump_prev)
 vim.keymap.set({ 'n', 'v' }, '<leader>c', '<plug>NERDCommenterToggle', opts)
