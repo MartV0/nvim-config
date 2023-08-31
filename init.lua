@@ -18,7 +18,6 @@ vim.opt.sidescrolloff = 10
 vim.opt.sidescroll = 6
 vim.opt.startofline = true
 vim.opt.linebreak = true
-vim.opt.backup = true
 vim.opt.colorcolumn = '80'
 --folding with treesitter:
 vim.opt.foldmethod = 'expr'
