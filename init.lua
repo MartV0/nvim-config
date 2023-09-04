@@ -9,7 +9,7 @@ vim.opt.splitright = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrap = false
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.history = 2000
 vim.opt.scrolloff = 10
 vim.opt.hidden = true
@@ -176,6 +176,12 @@ local plugins = {
         end,
         opts = {}
     },
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = {
+            "mfussenegger/nvim-dap"
+        }
+    },
 }
 require("lazy").setup(plugins)
 ----------------------------
@@ -211,8 +217,7 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
     -- Replace the language servers listed here
     -- with the ones you want to install
-    ensure_installed = { "lua_ls", "pyright" },
-    --TODO: misschien pyright ipv jedi?
+    ensure_installed = { "lua_ls", "pyright", "csharp_ls" },
     handlers = {
         lsp.default_setup,
         lua_ls = function()
@@ -221,16 +226,23 @@ require('mason-lspconfig').setup({
         end,
     },
 })
---TODO
+----------------------------
+-------DAP-STUFF------------
+----------------------------
+require("dapui").setup()
+
+----------------------------
+-------TODO things----------
+----------------------------
 --DAP
---formatter
+    --setup voor python pipenv en c sharp
 --snippets
 --maybe add later stuff:
 --easy align maybe
 --telescope extensie -> zoek door text
 --harpoon
---kijken voor coole motions plugins
 --iets voor git -> git-conflicts.nvim
+
 vim.cmd [[colorscheme nightfly]]
 require('lualine').setup()
 ----------------------------
