@@ -141,14 +141,7 @@ local plugins = {
             require("neoscroll").setup()
         end,
     },
-    {
-        "m4xshen/hardtime.nvim",
-        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-        opts = {
-            restriction_mode = "hint",
-            disable_mouse = false,
-        }
-    },
+    ----------LSP zero stuff----------------
     { 'VonHeikemen/lsp-zero.nvim',        branch = 'dev-v3' },
     --- Uncomment these if you want to manage LSP servers from neovim
     { 'williamboman/mason.nvim' },
@@ -167,6 +160,7 @@ local plugins = {
             { 'L3MON4D3/LuaSnip' },
         }
     },
+    --------------------------------------
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
