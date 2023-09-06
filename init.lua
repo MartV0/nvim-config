@@ -182,6 +182,11 @@ local plugins = {
             "mfussenegger/nvim-dap"
         }
     },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {} -- this is equalent to setup({}) function
+    },
 }
 require("lazy").setup(plugins)
 ----------------------------
@@ -236,6 +241,7 @@ require("dapui").setup()
 ----------------------------
 --DAP
     --setup voor python pipenv en c sharp
+--pyright zo maken dat het suggesties van pipenv kan krijgen
 --snippets
 --maybe add later stuff:
 --easy align maybe
