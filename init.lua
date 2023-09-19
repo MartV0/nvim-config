@@ -62,7 +62,7 @@ local plugins = {
                 sync_install = false,
                 highlight = { enable = true },
                 indent = { enable = true },
-                ensure_installed = { "lua", "javascript", "python", "haskell", "c_sharp" },
+                ensure_installed = { "lua", "javascript", "python", "haskell", "c_sharp", "markdown"},
             })
         end
     },
@@ -181,6 +181,7 @@ local plugins = {
         event = "InsertEnter",
         opts = {} -- this is equalent to setup({}) function
     },
+    'michaeljsmith/vim-indent-object',
 }
 require("lazy").setup(plugins)
 ----------------------------
