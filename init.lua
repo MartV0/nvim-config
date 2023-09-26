@@ -62,7 +62,7 @@ local plugins = {
                 sync_install = false,
                 highlight = { enable = true },
                 indent = { enable = true },
-                ensure_installed = { "lua", "javascript", "python", "haskell", "c_sharp", "markdown"},
+                ensure_installed = { "lua", "javascript", "python", "haskell", "c_sharp", "markdown" },
             })
         end
     },
@@ -176,12 +176,19 @@ local plugins = {
             "mfussenegger/nvim-dap"
         }
     },
+    "jay-babu/mason-nvim-dap.nvim",
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
         opts = {} -- this is equalent to setup({}) function
     },
     'michaeljsmith/vim-indent-object',
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter"
+        }
+    }
 }
 require("lazy").setup(plugins)
 ----------------------------
@@ -230,12 +237,22 @@ require('mason-lspconfig').setup({
 -------DAP-STUFF------------
 ----------------------------
 require("dapui").setup()
+require("mason-nvim-dap").setup({
+    ensure_installed = {'csharp', 'python'},
+    handlers = {
+        function(config)
+          -- all sources with no handler get passed here
+          -- Keep original functionality
+          require('mason-nvim-dap').default_setup(config)
+        end,
+    },
+})
 
 ----------------------------
 -------TODO things----------
 ----------------------------
 --DAP
-    --setup voor python pipenv en c sharp
+--setup voor python pipenv en c sharp
 --pyright zo maken dat het suggesties van pipenv kan krijgen
 --snippets
 --maybe add later stuff:
@@ -273,3 +290,8 @@ vim.keymap.set("n", "]t", require("todo-comments").jump_next)
 vim.keymap.set("n", "[t", require("todo-comments").jump_prev)
 vim.keymap.set({ 'n', 'v' }, '<leader>c', '<plug>NERDCommenterToggle', opts)
 vim.keymap.set("n", '<leader>gs', ':SymbolsOutline<CR>', opts)
+
+vim.api.nvim_create_user_command('DebugUi', function()
+        require("dapui").toggle()
+    end,
+{})
