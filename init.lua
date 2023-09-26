@@ -34,6 +34,7 @@ vim.opt.expandtab = true
 vim.g.mapleader = ' '
 vim.g.NERDCreateDefaultMappings = 0
 
+vim.cmd("au TextYankPost * silent! lua vim.highlight.on_yank {higroup=\"Search\", timeout=500}")
 ----------------------------
 -------LAZY/PLUGINS---------
 ----------------------------
