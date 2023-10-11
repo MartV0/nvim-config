@@ -143,7 +143,7 @@ local plugins = {
         end,
     },
     ----------LSP zero stuff----------------
-    { 'VonHeikemen/lsp-zero.nvim',        branch = 'dev-v3' },
+    { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
     --- Uncomment these if you want to manage LSP servers from neovim
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },
