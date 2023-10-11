@@ -189,7 +189,16 @@ local plugins = {
         dependencies = {
             "nvim-treesitter/nvim-treesitter"
         }
-    }
+    },
+    {
+        "Wansmer/treesj"
+    },
+    {
+        "https://github.com/hiphish/rainbow-delimiters.nvim"
+    },
+    {
+        "tpope/vim-fugitive"
+    },
 }
 require("lazy").setup(plugins)
 ----------------------------
@@ -239,12 +248,12 @@ require('mason-lspconfig').setup({
 ----------------------------
 require("dapui").setup()
 require("mason-nvim-dap").setup({
-    ensure_installed = {'csharp', 'python'},
+    ensure_installed = { 'csharp', 'python' },
     handlers = {
         function(config)
-          -- all sources with no handler get passed here
-          -- Keep original functionality
-          require('mason-nvim-dap').default_setup(config)
+            -- all sources with no handler get passed here
+            -- Keep original functionality
+            require('mason-nvim-dap').default_setup(config)
         end,
     },
 })
@@ -260,7 +269,12 @@ require("mason-nvim-dap").setup({
 --easy align maybe
 --telescope extensie -> zoek door text
 --harpoon
---iets voor git -> git-conflicts.nvim
+--substitute.nvim -> delete + paste in een
+--of karen yank
+--live command nvim
+--iets voor registers
+--no neck pain
+--leet buddy foor leetcode challenges
 
 vim.cmd [[colorscheme nightfly]]
 require('lualine').setup()
@@ -291,8 +305,8 @@ vim.keymap.set("n", "]t", require("todo-comments").jump_next)
 vim.keymap.set("n", "[t", require("todo-comments").jump_prev)
 vim.keymap.set({ 'n', 'v' }, '<leader>c', '<plug>NERDCommenterToggle', opts)
 vim.keymap.set("n", '<leader>gs', ':SymbolsOutline<CR>', opts)
+vim.keymap.set("n", '<leader>J', require('treesj').toggle, opts)
 
-vim.api.nvim_create_user_command('DebugUi', function()
-        require("dapui").toggle()
-    end,
-{})
+vim.api.nvim_create_user_command('DebugUi',
+    function() require("dapui").toggle() end,
+    {})
